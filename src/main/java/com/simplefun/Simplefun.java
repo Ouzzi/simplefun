@@ -1,7 +1,9 @@
 package com.simplefun;
 
 import com.simplefun.block.ModBlocks;
+import com.simplefun.command.ModCommands;
 import com.simplefun.config.SimplefunConfig;
+import com.simplefun.event.PlayerHeadDropHandler;
 import com.simplefun.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -27,6 +29,8 @@ public class Simplefun implements ModInitializer {
 
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
+        PlayerHeadDropHandler.register();
+        ModCommands.register();
 
 	}
 
