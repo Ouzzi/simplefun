@@ -18,9 +18,15 @@
 		"main": [
 			"com.simplefun.Simplefun"
 		],
+        "client": [
+            "com.simplefun.SimplefunClient"
+        ],
 		"fabric-datagen": [
 			"com.simplefun.SimplefunDataGenerator"
-		]
+		],
+        "modmenu": [
+          "com.simplefun.compat.ModMenuIntegration"
+        ]
 	},
 	"mixins": [
 		"simplefun.mixins.json"

@@ -19,7 +19,7 @@ public class PlayerHeadDropHandler {
 
     private static void onDeath(LivingEntity entity, DamageSource source) {
         // Config Check
-        if (!Simplefun.getConfig().pvp.playerHeadDrops) {
+        if (!Simplefun.getConfig().fun.playerHeadDrops) {
             return;
         }
 

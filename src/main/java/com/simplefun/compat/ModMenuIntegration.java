@@ -1,6 +1,6 @@
 package com.simplefun.compat;
 
-import com.simplefun.config.SimplevisualsConfig;
+import com.simplefun.config.SimplefunConfig;
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -13,6 +13,6 @@ public class ModMenuIntegration implements ModMenuApi {
     @Override
     @SuppressWarnings("deprecation") // AutoConfig ist sicher auf dem Client, Warnung ignorieren
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> AutoConfig.getConfigScreen(SimplevisualsConfig.class, parent).get();
+        return parent -> AutoConfig.getConfigScreen(SimplefunConfig.class, parent).get();
     }
 }

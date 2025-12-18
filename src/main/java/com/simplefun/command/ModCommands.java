@@ -36,7 +36,7 @@ public class ModCommands {
                                     .then(CommandManager.argument("enabled", BoolArgumentType.bool())
                                             .executes(ctx -> {
                                                 boolean val = BoolArgumentType.getBool(ctx, "enabled");
-                                                Simplefun.getConfig().pvp.playerHeadDrops = val;
+                                                Simplefun.getConfig().fun.playerHeadDrops = val;
                                                 saveConfig();
                                                 ctx.getSource().sendFeedback(() -> Text.literal("Player Head Drops enabled: " + val), true);
                                                 return 1;
