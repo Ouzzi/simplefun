@@ -223,6 +223,8 @@
     "text.autoconfig.simplefun.option.visuals.pickupNotifier.pickupVanillaStyle.@Tooltip": "Uses the vanilla Minecraft style for the pickup notifier.",
     "text.autoconfig.simplefun.option.visuals.pickupNotifier.pickupBackgroundOpacity": "Background Opacity",
     "text.autoconfig.simplefun.option.visuals.pickupNotifier.pickupBackgroundOpacity.@Tooltip": "Opacity of the pickup notifier background (0.0 - 1.0).",
+    "text.autoconfig.simplefun.option..fun.playerHeadDrops": "Player Head Drops",
+    "text.autoconfig.simplefun.option..fun.playerHeadDrops.@Tooltip": "If enabled, players drop their head when killed by another player.",
 
   "text.autoconfig.simplefun.option.qOL.enableHoeHarvest": "Hoe Replanting",
   "text.autoconfig.simplefun.option.qOL.enableHoeHarvest.@Tooltip": "Right-click fully grown crops with a hoe to harvest and replant them. Consumes durability.",
