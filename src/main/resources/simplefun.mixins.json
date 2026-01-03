@@ -3,7 +3,9 @@
   "package": "com.simplefun.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "EnchantabilityMixin",
     "ItemMixin",
+    "NoDamageMixin",
     "YeetMixin"
   ],
   "injectors": {

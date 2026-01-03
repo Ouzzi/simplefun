@@ -1,8 +1,6 @@
 package com.simplefun;
 
-import com.simplefun.datagen.ModLootTableProvider;
-import com.simplefun.datagen.ModModelProvider;
-import com.simplefun.datagen.ModRecipeProvider;
+import com.simplefun.datagen.*;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -14,5 +12,9 @@ public class SimplefunDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(ModModelProvider::new);
         pack.addProvider(ModLootTableProvider::new);
         pack.addProvider(ModRecipeProvider::new);
+
+        pack.addProvider(ModItemTagProvider::new);
+        pack.addProvider(ModRegistryDataGenerator::new);
+
 	}
 }

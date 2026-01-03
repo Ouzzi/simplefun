@@ -191,5 +191,7 @@
   "text.autoconfig.simplefun.option.visuals.heldItemTooltips.enable": "Aktivieren",
   "text.autoconfig.simplefun.option.visuals.heldItemTooltips.showDurability": "Show Durability",
   "text.autoconfig.simplefun.option.visuals.heldItemTooltips.showEnchantments": "Show Enchantments",
-  "text.autoconfig.simplefun.option.visuals.heldItemTooltips.maxEnchantments": "Max Enchantments"
+  "text.autoconfig.simplefun.option.visuals.heldItemTooltips.maxEnchantments": "Max Enchantments",
+
+  "enchantment.simplefun.no_damage": "Kein Schaden"
 }
