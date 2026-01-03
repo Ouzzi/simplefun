@@ -1,5 +1,6 @@
 package com.simplefun.datagen;
 
+import com.simplefun.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Items;
@@ -17,12 +18,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         // Füge Feder und Stock zu den verzauberbaren Waffen hinzu.
         // Das erlaubt Knockback, Fire Aspect, Sharpness, etc.
-        valueLookupBuilder(ItemTags.WEAPON_ENCHANTABLE)
+        valueLookupBuilder(ModTags.Items.KNOCKBACK_ALLOWED)
                 .add(Items.FEATHER)
-                .add(Items.STICK);
-                
+                .add(Items.STICK)
+                .addTag(ItemTags.SWORDS);
+
         // WICHTIG: Damit sie im Amboss auch als "Waffe" gelten für Knockback
-        valueLookupBuilder(ItemTags.MACE_ENCHANTABLE) // Knockback geht oft auf Maces und Schwerter
+        valueLookupBuilder(ModTags.Items.KNOCKBACK_ALLOWED) // Knockback geht oft auf Maces und Schwerter
                 .add(Items.FEATHER)
                 .add(Items.STICK);
     }
