@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LivingEntityRendererMixin {
     @Inject(method = "updateRenderState", at = @At("TAIL"))
     private void updatePiggyState(LivingEntity entity, LivingEntityRenderState state, float tickDelta, CallbackInfo ci) {
+        // Diese Prüfung funktioniert nun für ALLE LivingEntities, inklusive Spieler (lokal und remote).
         if (state instanceof PiggyStateExtension piggyState) {
             boolean hasEffect = entity.hasStatusEffect(ModEffects.PIGGY_EFFECT);
             piggyState.simplefun$setPiggy(hasEffect);
