@@ -192,6 +192,7 @@
   "text.autoconfig.simplefun.option.visuals.heldItemTooltips.showDurability": "Show Durability",
   "text.autoconfig.simplefun.option.visuals.heldItemTooltips.showEnchantments": "Show Enchantments",
   "text.autoconfig.simplefun.option.visuals.heldItemTooltips.maxEnchantments": "Max Enchantments",
+  "effect.simplefun.piggy_effect": "Schweine-Verwandlung",
 
   "enchantment.simplefun.no_damage": "Kein Schaden"
 }

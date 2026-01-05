@@ -6,6 +6,7 @@
     "EnchantabilityMixin",
     "ItemMixin",
     "NoDamageMixin",
+    "PiggyFoodMixin",
     "YeetMixin"
   ],
   "injectors": {
@@ -13,5 +14,9 @@
   },
   "overwrites": {
     "requireAnnotations": true
-	}
+  },
+  "client": [
+    "client.LivingEntityRendererMixin",
+    "client.LivingEntityRenderStateMixin"
+  ]
 }

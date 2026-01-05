@@ -21,6 +21,9 @@ public class SimplefunConfig implements ConfigData {
         public boolean playerHeadDrops = true;
 
         @ConfigEntry.Gui.Tooltip
+        public boolean enablePiggyEffect = true;
+
+        @ConfigEntry.Gui.Tooltip
         public boolean enableYeet = true;
         @ConfigEntry.Gui.Tooltip
         public float yeetStrength = 3.0f;
