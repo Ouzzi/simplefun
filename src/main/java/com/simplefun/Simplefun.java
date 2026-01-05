@@ -1,8 +1,10 @@
 package com.simplefun;
 
 import com.simplefun.block.ModBlocks;
+import com.simplefun.block.entity.ModEntities;
 import com.simplefun.command.ModCommands;
 import com.simplefun.config.SimplefunConfig;
+import com.simplefun.datagen.ModTradeOffers;
 import com.simplefun.enchantment.ModEnchantments;
 import com.simplefun.event.PlayerHeadDropHandler;
 import com.simplefun.item.ModItems;
@@ -31,8 +33,10 @@ public class Simplefun implements ModInitializer {
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
         PlayerHeadDropHandler.register();
+        ModEntities.registerModEntities();
         ModCommands.register();
         ModEnchantments.registerModEnchantments();
+        ModTradeOffers.registerModTradeOffers();
 
 	}
 

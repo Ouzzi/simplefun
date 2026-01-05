@@ -16,16 +16,19 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        // Füge Feder und Stock zu den verzauberbaren Waffen hinzu.
-        // Das erlaubt Knockback, Fire Aspect, Sharpness, etc.
+        valueLookupBuilder(ModTags.Items.SIMPLE_FUN_ITEMS)
+                .add(Items.FEATHER)
+                .add(Items.STICK);
+
         valueLookupBuilder(ModTags.Items.KNOCKBACK_ALLOWED)
                 .add(Items.FEATHER)
                 .add(Items.STICK)
-                .addTag(ItemTags.SWORDS);
-
-        // WICHTIG: Damit sie im Amboss auch als "Waffe" gelten für Knockback
-        valueLookupBuilder(ModTags.Items.KNOCKBACK_ALLOWED) // Knockback geht oft auf Maces und Schwerter
-                .add(Items.FEATHER)
-                .add(Items.STICK);
+                .forceAddTag(ItemTags.SWORDS)
+                .forceAddTag(ItemTags.AXES)
+                .forceAddTag(ItemTags.MACE_ENCHANTABLE)
+                .forceAddTag(ItemTags.TRIDENT_ENCHANTABLE)
+                .forceAddTag(ItemTags.BOW_ENCHANTABLE)
+                .forceAddTag(ItemTags.CROSSBOW_ENCHANTABLE)
+                .forceAddTag(ItemTags.LUNGE_ENCHANTABLE);
     }
 }
