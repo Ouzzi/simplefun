@@ -13,6 +13,8 @@ public class SimplefunClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        EntityRendererRegistry.register(ModEntities.BRICK_PROJECTILE, FlyingItemEntityRenderer::new);
+
         LivingEntityFeatureRendererRegistrationCallback.EVENT.register((entityType, entityRenderer, registrationHelper, context) -> {
             if (entityType == EntityType.PLAYER) {
                 registrationHelper.register(new PigHeadFeatureRenderer<>(
