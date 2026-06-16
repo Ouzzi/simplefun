@@ -18,6 +18,12 @@
     "entrypoints": {
         "main": [
             "com.simplefun.SimplefunFabric"
+        ],
+        "client": [
+            "com.simplefun.SimplefunFabricClient"
+        ],
+        "modmenu": [
+            "com.simplefun.compat.ModMenuIntegration"
         ]
     },
     "mixins": [
@@ -28,6 +34,10 @@
         "fabricloader": ">=${fabric_loader_version}",
         "fabric-api": "*",
         "minecraft": "~${minecraft_version}",
-        "java": ">=${java_version}"
+        "java": ">=${java_version}",
+        "cloth-config": ">=21.11.0"
+    },
+    "suggests": {
+        "modmenu": "*"
     }
 }

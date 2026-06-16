@@ -28,4 +28,8 @@ public class SimplefunCommon {
     public static SimplefunConfig getConfig() {
         return AutoConfig.getConfigHolder(SimplefunConfig.class).getConfig();
     }
+
+    public static void saveConfig() {
+        AutoConfig.getConfigHolder(SimplefunConfig.class).save();
+    }
 }
