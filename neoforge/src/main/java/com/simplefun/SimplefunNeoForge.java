@@ -31,7 +31,7 @@ public class SimplefunNeoForge {
         });
 
         modBus.addListener((BuildCreativeModeTabContentsEvent event) -> {
-            if (event.getTabKey().equals(CreativeModeTabs.COMBAT)) {
+            if (event.getTabKey().equals(CreativeModeTabs.INGREDIENTS)) {
                 event.accept(ModItems.BRICK_SNOWBALL);
             }
         });

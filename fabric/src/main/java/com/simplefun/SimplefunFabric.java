@@ -22,7 +22,7 @@ public class SimplefunFabric implements ModInitializer {
         SimplefunRegistry.registerEntities();
         SimplefunRegistry.registerEffects();
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT).register(entries -> entries.accept(ModItems.BRICK_SNOWBALL));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS).register(entries -> entries.accept(ModItems.BRICK_SNOWBALL));
         ServerLivingEntityEvents.AFTER_DEATH.register(PlayerHeadDrop::onDeath);
         CommandRegistrationCallback.EVENT.register((dispatcher, access, environment) -> SimplefunCommands.register(dispatcher));
     }
