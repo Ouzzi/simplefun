@@ -1,4 +1,4 @@
-package com.simplefun.mixin;
+package com.simplefun.mixin.fabric;
 
 import com.simplefun.entity.PiggyTracked;
 import com.simplefun.registry.ModEffects;
@@ -16,6 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * Syncs a player's piggy state to all tracking clients via synced entity data
  * (player status effects are not sent to remote trackers in vanilla).
+ *
+ * Fabric only: adding a synced data id to Player via mixin breaks NeoForge's registry init,
+ * so on NeoForge the pig head is shown only for the local player and for mobs.
  */
 @Mixin(Player.class)
 public abstract class PlayerEntityMixin implements PiggyTracked {
@@ -32,9 +35,8 @@ public abstract class PlayerEntityMixin implements PiggyTracked {
     @Inject(method = "tick", at = @At("TAIL"))
     private void simplefun$syncPiggy(CallbackInfo ci) {
         LivingEntity self = (LivingEntity) (Object) this;
-        // Server is authoritative; set() only sends a packet on actual change.
         if (!self.level().isClientSide()) {
-            boolean piggy = self.hasEffect(ModEffects.PIGGY_HOLDER);
+            boolean piggy = self.hasEffect(ModEffects.holder());
             if (self.getEntityData().get(SIMPLEFUN_PIGGY) != piggy) {
                 self.getEntityData().set(SIMPLEFUN_PIGGY, piggy);
             }

@@ -23,7 +23,7 @@ public class LivingEntityRendererMixin {
                 hasEffect = tracked.simplefun$isPiggyTracked();
             } else {
                 // Mobs: effect instances are synced via the entity tracker.
-                hasEffect = entity.hasEffect(ModEffects.PIGGY_HOLDER);
+                hasEffect = entity.hasEffect(ModEffects.holder());
             }
             piggyState.simplefun$setPiggy(hasEffect);
         }

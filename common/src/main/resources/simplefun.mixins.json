@@ -9,7 +9,6 @@
     "ItemMixin",
     "NoDamageMixin",
     "PiggyFoodMixin",
-    "PlayerEntityMixin",
     "YeetMixin"
   ],
   "client": [

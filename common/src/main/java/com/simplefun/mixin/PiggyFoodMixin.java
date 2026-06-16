@@ -25,7 +25,7 @@ public abstract class PiggyFoodMixin {
         LivingEntity entity = (LivingEntity) (Object) this;
         if (this.useItem.is(Items.PORKCHOP) || this.useItem.is(Items.COOKED_PORKCHOP)) {
             if (!entity.level().isClientSide()) {
-                entity.addEffect(new MobEffectInstance(ModEffects.PIGGY_HOLDER, 6000, 0));
+                entity.addEffect(new MobEffectInstance(ModEffects.holder(), 6000, 0));
             }
         }
     }

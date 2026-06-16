@@ -2,8 +2,9 @@ package com.simplefun;
 
 import com.simplefun.command.SimplefunCommands;
 import com.simplefun.event.PlayerHeadDrop;
+import com.simplefun.registry.ModEffects;
+import com.simplefun.registry.ModEntities;
 import com.simplefun.registry.ModItems;
-import com.simplefun.registry.SimplefunRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
@@ -22,16 +23,11 @@ public class SimplefunNeoForge {
     public SimplefunNeoForge(IEventBus modBus, ModContainer modContainer, Dist dist) {
         SimplefunCommon.init();
 
-        // NeoForge registries are frozen except during their RegisterEvent (then unfrozen),
-        // so the shared vanilla Registry.register calls run here.
+        // NeoForge requires registering through the event helper (not vanilla Registry.register).
         modBus.addListener((RegisterEvent event) -> {
-            if (event.getRegistryKey().equals(Registries.ITEM)) {
-                SimplefunRegistry.registerItems();
-            } else if (event.getRegistryKey().equals(Registries.ENTITY_TYPE)) {
-                SimplefunRegistry.registerEntities();
-            } else if (event.getRegistryKey().equals(Registries.MOB_EFFECT)) {
-                SimplefunRegistry.registerEffects();
-            }
+            event.register(Registries.ITEM, h -> h.register(ModItems.BRICK_SNOWBALL_KEY, ModItems.BRICK_SNOWBALL));
+            event.register(Registries.ENTITY_TYPE, h -> h.register(ModEntities.BRICK_PROJECTILE_KEY, ModEntities.BRICK_PROJECTILE));
+            event.register(Registries.MOB_EFFECT, h -> h.register(ModEffects.PIGGY_KEY, ModEffects.PIGGY_EFFECT));
         });
 
         modBus.addListener((BuildCreativeModeTabContentsEvent event) -> {

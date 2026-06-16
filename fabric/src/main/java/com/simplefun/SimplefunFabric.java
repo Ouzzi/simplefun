@@ -15,6 +15,7 @@ public class SimplefunFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         SimplefunCommon.init();
+        SimplefunCommon.registerConfig();
 
         // Fabric registries are open during init.
         SimplefunRegistry.registerItems();

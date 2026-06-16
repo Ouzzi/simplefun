@@ -14,9 +14,10 @@ public class SimplefunCommon {
 
     public static void init() {
         Constants.LOG.info("Initializing {} (common)", Constants.MOD_NAME);
-        registerConfig();
     }
 
+    // Idempotent. Registered lazily on first use rather than in the loader bootstrap:
+    // calling AutoConfig.register during NeoForge's parallel mod-loading phase breaks loading.
     public static void registerConfig() {
         if (!configRegistered) {
             AutoConfig.register(SimplefunConfig.class, GsonConfigSerializer::new);
@@ -26,6 +27,7 @@ public class SimplefunCommon {
 
     // Always read the live config instance from the holder so runtime edits (commands / GUI) are reflected.
     public static SimplefunConfig getConfig() {
+        registerConfig();
         return AutoConfig.getConfigHolder(SimplefunConfig.class).getConfig();
     }
 

@@ -17,9 +17,15 @@ public class ModEffects {
 
     public static final MobEffect PIGGY_EFFECT = new PiggyEffect();
 
-    public static Holder<MobEffect> PIGGY_HOLDER;
+    private static Holder<MobEffect> piggyHolder;
 
-    public static void register() {
-        PIGGY_HOLDER = Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, PIGGY_KEY, PIGGY_EFFECT);
+    /** Lazily resolved at first use (after registries are frozen) - safe on both loaders. */
+    public static Holder<MobEffect> holder() {
+        Holder<MobEffect> h = piggyHolder;
+        if (h == null) {
+            h = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(PIGGY_EFFECT);
+            piggyHolder = h;
+        }
+        return h;
     }
 }

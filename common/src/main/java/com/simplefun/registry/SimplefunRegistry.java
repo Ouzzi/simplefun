@@ -19,6 +19,6 @@ public class SimplefunRegistry {
     }
 
     public static void registerEffects() {
-        ModEffects.register();
+        Registry.register(BuiltInRegistries.MOB_EFFECT, ModEffects.PIGGY_KEY, ModEffects.PIGGY_EFFECT);
     }
 }
