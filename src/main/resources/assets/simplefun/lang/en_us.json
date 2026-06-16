@@ -1,43 +1,38 @@
 {
-  "itemgroup.simplefun.money_items": "Currency Materials",
-  "item.simplefun.spawn_teleporter": "Spawn Teleporter",
   "item.simplefun.brick_snowball": "Brick Snowball",
+
+  "effect.simplefun.piggy_effect": "Piggy Transformation",
+  "enchantment.simplefun.no_damage": "No Damage",
 
   "text.autoconfig.simplefun.title": "Simplefun Config",
   "text.autoconfig.simplefun.category.default": "General",
 
-  "text.autoconfig.simplefun.option.balancing": "Balancing",
-  "text.autoconfig.simplefun.option.balancing.rocketStackSize": "Rocket Stack Size",
-  "text.autoconfig.simplefun.option.balancing.rocketStackSize.@Tooltip[0]": "Default: 64.",
-  "text.autoconfig.simplefun.option.balancing.rocketStackSize.@Tooltip[1]": "Set to 16 to nerf elytra flight.",
-  "text.autoconfig.simplefun.option.balancing.vaultCooldownDays": "Vault Cooldown (Days)",
-  "text.autoconfig.simplefun.option.balancing.vaultCooldownDays.@Tooltip": "Time in Minecraft days until a player can loot a vault again.",
-
-  "text.autoconfig.simplefun.option.pvp": "PvP Tweaks",
-  "text.autoconfig.simplefun.option.pvp.playerHeadDrops": "Player Head Drops",
-  "text.autoconfig.simplefun.option.pvp.playerHeadDrops.@Tooltip": "If enabled, players drop their head when killed by another player.",
-
   "text.autoconfig.simplefun.option.fun": "Fun Features",
+
+  "text.autoconfig.simplefun.option.fun.playerHeadDrops": "Player Head Drops",
+  "text.autoconfig.simplefun.option.fun.playerHeadDrops.@Tooltip": "If enabled, players drop their head when killed by another player.",
+  "text.autoconfig.simplefun.option.fun.enablePiggyEffect": "Piggy Transformation",
+  "text.autoconfig.simplefun.option.fun.enablePiggyEffect.@Tooltip": "Eating (cooked) porkchop turns the player into a pig for 5 minutes.",
+  "text.autoconfig.simplefun.option.fun.enableNoDamage": "No-Damage / Feather",
+  "text.autoconfig.simplefun.option.fun.enableNoDamage.@Tooltip": "Feathers and the No-Damage enchantment make player melee attacks deal 0 damage (knockback still applies).",
   "text.autoconfig.simplefun.option.fun.enableYeet": "Enable Yeet (Throw)",
-  "text.autoconfig.simplefun.option.fun.enableYeet.@Tooltip": "Allows throwing items while sneaking.",
+  "text.autoconfig.simplefun.option.fun.enableYeet.@Tooltip": "Allows throwing items far while sneaking (Sneak + Q).",
   "text.autoconfig.simplefun.option.fun.yeetStrength": "Yeet Strength",
   "text.autoconfig.simplefun.option.fun.yeetStrength.@Tooltip": "Velocity multiplier when throwing items while sneaking.",
   "text.autoconfig.simplefun.option.fun.enableThrowableBricks": "Enable Throwable Bricks",
-  "text.autoconfig.simplefun.option.fun.enableThrowableBricks.@Tooltip": "If enabled, Bricks and Nether Bricks can be thrown.",
+  "text.autoconfig.simplefun.option.fun.enableThrowableBricks.@Tooltip": "If enabled, Bricks, Nether Bricks and Resin Bricks can be thrown.",
   "text.autoconfig.simplefun.option.fun.throwableBricksBreakBlocks": "Throwable Bricks Break Glass",
-  "text.autoconfig.simplefun.option.fun.throwableBricksBreakBlocks.@Tooltip": "If enabled, thrown bricks will shatter glass upon impact.",
+  "text.autoconfig.simplefun.option.fun.throwableBricksBreakBlocks.@Tooltip": "If enabled, thrown bricks shatter glass on impact.",
   "text.autoconfig.simplefun.option.fun.brickDamage": "Brick Damage",
   "text.autoconfig.simplefun.option.fun.brickDamage.@Tooltip": "Damage dealt by thrown bricks.",
   "text.autoconfig.simplefun.option.fun.brickSnowballDamage": "Brick Snowball Damage",
   "text.autoconfig.simplefun.option.fun.brickSnowballDamage.@Tooltip": "Damage dealt by thrown Brick Snowballs.",
-  "text.autoconfig.simplefun.option.fun.playerHeadDrops": "Player Head Drops",
-  "text.autoconfig.simplefun.option.fun.playerHeadDrops.@Tooltip": "If enabled, players drop their head when killed by another player.",
 
-  "key.categories.simplefun": "Simplefun",
-  "key.category.simplefun.general": "Simplefun - General",
-  "effect.simplefun.piggy_effect": "Piggy Transformation",
-
-
-    "enchantment.simplefun.no_damage": "No Damage"
-
+  "commands.simplefun.pvp.headDrops": "Player Head Drops enabled: %s",
+  "commands.simplefun.yeet.enabled": "Yeet enabled: %s",
+  "commands.simplefun.yeet.strength": "Yeet Strength set to: %s",
+  "commands.simplefun.bricks.enabled": "Throwable Bricks enabled: %s",
+  "commands.simplefun.bricks.breakGlass": "Bricks Break Glass enabled: %s",
+  "commands.simplefun.bricks.damage": "Brick Damage set to: %s",
+  "commands.simplefun.bricks.snowballDamage": "Brick Snowball Damage set to: %s"
 }

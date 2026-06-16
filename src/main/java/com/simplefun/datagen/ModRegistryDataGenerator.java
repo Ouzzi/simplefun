@@ -7,10 +7,11 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentLevelBasedValue;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.enchantment.effect.value.AddEnchantmentEffect;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -47,12 +48,18 @@ public class ModRegistryDataGenerator extends FabricDynamicRegistryProvider {
                 Enchantment.definition(
                         itemRegistry.getOrThrow(ModTags.Items.KNOCKBACK_ALLOWED), // JETZT AUCH FÜR STICK/FEDER!
                         5, // Vanilla Weight: 5 (Common)
-                        2, // Vanilla Max Level: 2
+                        5, // Max Level erhöht (Todo: "Higher knockback levels", Vanilla = 2)
                         Enchantment.leveledCost(5, 20), // Vanilla Kosten Berechnung
                         Enchantment.leveledCost(55, 20),
                         2, // Anvil Cost
                         AttributeModifierSlot.MAINHAND
                 ))
+                // WICHTIG: Vanilla-Knockback-Effekt 1:1 wieder anhängen.
+                // Ohne diesen Block würde das Override die Vanilla-knockback.json mit einer
+                // wirkungslosen Verzauberung überschreiben (Knockback würde global nichts mehr tun).
+                // Vanilla nutzt minecraft:add mit linear(base=1.0, per_level_above_first=1.0).
+                .addEffect(EnchantmentEffectComponentTypes.KNOCKBACK,
+                        new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(1.0F, 1.0F)))
                 .build(Enchantments.KNOCKBACK.getValue());
 
         // Dies generiert data/minecraft/enchantment/knockback.json und überschreibt Vanilla
@@ -61,6 +68,6 @@ public class ModRegistryDataGenerator extends FabricDynamicRegistryProvider {
 
     @Override
     public String getName() {
-        return "SimpleFun Registry Data Generator";
+        return "Simplefun Registry Data Generator";
     }
 }

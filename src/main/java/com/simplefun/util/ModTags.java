@@ -11,9 +11,6 @@ public class ModTags {
         // Dieser Tag beinhaltet alles, was Knockback & No Damage bekommen darf
         // Also: Federn, Sticks UND normale Waffen (damit wir Knockback für Schwerter nicht kaputt machen)
         public static final TagKey<Item> KNOCKBACK_ALLOWED = createTag("knockback_allowed");
-        
-        // Nur unsere speziellen Items
-        public static final TagKey<Item> SIMPLE_FUN_ITEMS = createTag("simple_fun_items");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of(Simplefun.MOD_ID, name));

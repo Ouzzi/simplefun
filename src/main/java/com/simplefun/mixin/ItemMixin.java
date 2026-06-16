@@ -6,9 +6,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.stat.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
@@ -31,22 +28,7 @@ public class ItemMixin {
         ItemStack itemStack = user.getStackInHand(hand);
 
         if (self == Items.BRICK || self == Items.NETHER_BRICK || self == Items.RESIN_BRICK) {
-
-            world.playSound(null, user.getX(), user.getY(), user.getZ(),
-                    SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
-
-            if (!world.isClient()) {
-                BrickProjectileEntity projectile = new BrickProjectileEntity(world, user);
-                projectile.setItem(itemStack);
-                projectile.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
-                world.spawnEntity(projectile);
-            }
-
-            user.incrementStat(Stats.USED.getOrCreateStat(self));
-            if (!user.getAbilities().creativeMode) {
-                itemStack.decrement(1);
-            }
-
+            BrickProjectileEntity.throwFrom(world, user, itemStack);
             cir.setReturnValue(ActionResult.SUCCESS);
         }
     }

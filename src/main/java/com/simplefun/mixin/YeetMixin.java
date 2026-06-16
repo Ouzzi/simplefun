@@ -23,8 +23,10 @@ public abstract class YeetMixin {
 
         ServerPlayerEntity player = (ServerPlayerEntity) (Object) this;
 
-        // Yeet nur wenn Sneaking (Shift)
-        if (player.isSneaking()) {
+        // Yeet nur wenn Sneaking (Shift) und lebendig.
+        // isAlive() verhindert, dass Tod-Drops (z.B. der Spielerkopf) mitgeschleudert werden,
+        // falls der Server den Spieler beim Tod noch als schleichend führt.
+        if (player.isAlive() && player.isSneaking()) {
             float strength = Simplefun.getConfig().fun.yeetStrength;
 
             // Aktuelle Geschwindigkeit holen

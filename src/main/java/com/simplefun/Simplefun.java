@@ -19,8 +19,6 @@ import org.slf4j.LoggerFactory;
 public class Simplefun implements ModInitializer {
 	public static final String MOD_ID = "simplefun";
 
-    private static SimplefunConfig CONFIG;
-
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
@@ -28,8 +26,6 @@ public class Simplefun implements ModInitializer {
         LOGGER.info("Initializing Simplefun mod...");
 
         AutoConfig.register(SimplefunConfig.class, GsonConfigSerializer::new);
-        CONFIG = AutoConfig.getConfigHolder(SimplefunConfig.class).getConfig();
-
 
         ModItems.registerModItems();
         ModBlocks.registerModBlocks();
@@ -42,5 +38,9 @@ public class Simplefun implements ModInitializer {
 
 	}
 
-    public static SimplefunConfig getConfig() { return CONFIG; }
+    // Always read the live config instance from the holder. Caching it in a static
+    // field would go stale if Cloth Config ever swaps the instance (load/reset/setConfig).
+    public static SimplefunConfig getConfig() {
+        return AutoConfig.getConfigHolder(SimplefunConfig.class).getConfig();
+    }
 }

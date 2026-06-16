@@ -7,7 +7,6 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKey;
@@ -19,16 +18,14 @@ import net.minecraft.village.TradedItem;
 import net.minecraft.village.VillagerProfession;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ModTradeOffers {
     public record WeightedEnchantment(RegistryKey<Enchantment> key, int level, int weight) {}
 
     //register trade offers here
     public static void registerModTradeOffers() {
-        Simplefun.LOGGER.info("Registering Custom Trade Offers for " + Simplefun.MOD_ID);
+        Simplefun.LOGGER.info("Registering Custom Trade Offers for {}", Simplefun.MOD_ID);
         registerVillagerTrades();
-        registerWanderingTraderTrades();
     }
 
 
@@ -42,9 +39,6 @@ public class ModTradeOffers {
         });
     }
 
-
-    public static void registerWanderingTraderTrades() {
-    }
 
     /**
      * Hilfsmethode: Zieht eine zufällige Verzauberung basierend auf dem Gewicht.
@@ -60,28 +54,6 @@ public class ModTradeOffers {
             if (pick < currentWeight) return e;
         }
         return pool.get(0);
-    }
-
-    private static ItemStack createRandomEnchantedItem(Entity entity, Random random, Item item, List<WeightedEnchantment> pool, int chanceForSecond) {
-        ItemStack stack = new ItemStack(item);
-        ItemEnchantmentsComponent.Builder builder = new ItemEnchantmentsComponent.Builder(ItemEnchantmentsComponent.DEFAULT);
-        WeightedEnchantment firstPick = pickWeighted(pool, random);
-        if (firstPick != null) {
-            addEnchantmentToBuilder(entity, builder, firstPick);
-            if (pool.size() > 1 && random.nextInt(100) < chanceForSecond) {
-                WeightedEnchantment secondPick = pickWeighted(pool, random);
-                int attempts = 0;
-                while (secondPick != null && secondPick.key().equals(firstPick.key()) && attempts < 10) {
-                    secondPick = pickWeighted(pool, random);
-                    attempts++;
-                }
-                if (secondPick != null && !secondPick.key().equals(firstPick.key())) {
-                    addEnchantmentToBuilder(entity, builder, secondPick);
-                }
-            }
-        }
-        stack.set(DataComponentTypes.ENCHANTMENTS, builder.build());
-        return stack;
     }
 
     private static void addEnchantmentToBuilder(Entity entity, ItemEnchantmentsComponent.Builder builder, WeightedEnchantment selection) {

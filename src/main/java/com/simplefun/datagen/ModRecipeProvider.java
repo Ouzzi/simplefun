@@ -1,15 +1,11 @@
 package com.simplefun.datagen;
 
-import com.simplefun.block.ModBlocks;
 import com.simplefun.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.recipe.RecipeExporter;
 import net.minecraft.data.recipe.RecipeGenerator;
-import net.minecraft.data.recipe.SmithingTransformRecipeJsonBuilder;
 import net.minecraft.item.Items;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +37,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public String getName() {
-        return "SimpleTweaks Recipes";
+        return "Simplefun Recipes";
     }
 }

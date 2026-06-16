@@ -22,12 +22,10 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        Simplefun.LOGGER.info("Registering Mod Items for " + Simplefun.MOD_ID);
+        Simplefun.LOGGER.info("Registering Mod Items for {}", Simplefun.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(BRICK_SNOWBALL);
-        });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
         });
     }
 }

@@ -1,23 +1,12 @@
 package com.simplefun.command;
 
 import com.mojang.brigadier.arguments.*;
-import com.mojang.brigadier.context.CommandContext;
 import com.simplefun.Simplefun;
 import com.simplefun.config.SimplefunConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.minecraft.command.CommandSource;
-import net.minecraft.entity.vehicle.*;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-
-import java.util.List;
 
 public class ModCommands {
 
@@ -27,8 +16,9 @@ public class ModCommands {
 
             // --- CONFIG COMMANDS (simplefun) ---
             dispatcher.register(CommandManager.literal("simplefun")
-                    // Level 4 für Admin-Befehle (Config Änderungen)
-                    .requires(source -> checkPermission(source, 4))
+                    // Level 4 (ADMINS) für Admin-Befehle (Config Änderungen).
+                    // requirePermissionLevel respektiert die OP-Stufe und Konsolen-/Funktions-Rechte korrekt.
+                    .requires(CommandManager.requirePermissionLevel(CommandManager.ADMINS_CHECK))
 
                     // 3. PvP
                     .then(CommandManager.literal("pvp")
@@ -38,7 +28,7 @@ public class ModCommands {
                                                 boolean val = BoolArgumentType.getBool(ctx, "enabled");
                                                 Simplefun.getConfig().fun.playerHeadDrops = val;
                                                 saveConfig();
-                                                ctx.getSource().sendFeedback(() -> Text.literal("Player Head Drops enabled: " + val), true);
+                                                ctx.getSource().sendFeedback(() -> Text.translatable("commands.simplefun.pvp.headDrops", val), true);
                                                 return 1;
                                             })))
                     )
@@ -53,7 +43,7 @@ public class ModCommands {
                                                         boolean val = BoolArgumentType.getBool(ctx, "enabled");
                                                         Simplefun.getConfig().fun.enableYeet = val;
                                                         saveConfig();
-                                                        ctx.getSource().sendFeedback(() -> Text.literal("Yeet enabled: " + val), true);
+                                                        ctx.getSource().sendFeedback(() -> Text.translatable("commands.simplefun.yeet.enabled", val), true);
                                                         return 1;
                                                     })))
                                     .then(CommandManager.literal("strength")
@@ -62,7 +52,7 @@ public class ModCommands {
                                                         float val = FloatArgumentType.getFloat(ctx, "value");
                                                         Simplefun.getConfig().fun.yeetStrength = val;
                                                         saveConfig();
-                                                        ctx.getSource().sendFeedback(() -> Text.literal("Yeet Strength set to: " + val), true);
+                                                        ctx.getSource().sendFeedback(() -> Text.translatable("commands.simplefun.yeet.strength", val), true);
                                                         return 1;
                                                     })))
                             )
@@ -73,7 +63,7 @@ public class ModCommands {
                                                         boolean val = BoolArgumentType.getBool(ctx, "enabled");
                                                         Simplefun.getConfig().fun.enableThrowableBricks = val;
                                                         saveConfig();
-                                                        ctx.getSource().sendFeedback(() -> Text.literal("Throwable Bricks enabled: " + val), true);
+                                                        ctx.getSource().sendFeedback(() -> Text.translatable("commands.simplefun.bricks.enabled", val), true);
                                                         return 1;
                                                     })))
                                     .then(CommandManager.literal("breakGlass")
@@ -82,7 +72,7 @@ public class ModCommands {
                                                         boolean val = BoolArgumentType.getBool(ctx, "enabled");
                                                         Simplefun.getConfig().fun.throwableBricksBreakBlocks = val;
                                                         saveConfig();
-                                                        ctx.getSource().sendFeedback(() -> Text.literal("Bricks Break Glass enabled: " + val), true);
+                                                        ctx.getSource().sendFeedback(() -> Text.translatable("commands.simplefun.bricks.breakGlass", val), true);
                                                         return 1;
                                                     })))
                                     .then(CommandManager.literal("damage")
@@ -91,7 +81,7 @@ public class ModCommands {
                                                         float val = FloatArgumentType.getFloat(ctx, "value");
                                                         Simplefun.getConfig().fun.brickDamage = val;
                                                         saveConfig();
-                                                        ctx.getSource().sendFeedback(() -> Text.literal("Brick Damage set to: " + val), true);
+                                                        ctx.getSource().sendFeedback(() -> Text.translatable("commands.simplefun.bricks.damage", val), true);
                                                         return 1;
                                                     })))
                                     .then(CommandManager.literal("snowballDamage")
@@ -100,7 +90,7 @@ public class ModCommands {
                                                         float val = FloatArgumentType.getFloat(ctx, "value");
                                                         Simplefun.getConfig().fun.brickSnowballDamage = val;
                                                         saveConfig();
-                                                        ctx.getSource().sendFeedback(() -> Text.literal("Brick Snowball Damage set to: " + val), true);
+                                                        ctx.getSource().sendFeedback(() -> Text.translatable("commands.simplefun.bricks.snowballDamage", val), true);
                                                         return 1;
                                                     })))
                             )
@@ -112,12 +102,5 @@ public class ModCommands {
 
     private static void saveConfig() {
         AutoConfig.getConfigHolder(SimplefunConfig.class).save();
-    }
-
-    private static boolean checkPermission(ServerCommandSource source, int level) {
-        if (source.getEntity() instanceof ServerPlayerEntity player) {
-            return source.getServer().getPlayerManager().isOperator(player.getPlayerConfigEntry());
-        }
-        return true;
     }
 }

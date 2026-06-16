@@ -16,10 +16,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        valueLookupBuilder(ModTags.Items.SIMPLE_FUN_ITEMS)
-                .add(Items.FEATHER)
-                .add(Items.STICK);
-
         valueLookupBuilder(ModTags.Items.KNOCKBACK_ALLOWED)
                 .add(Items.FEATHER)
                 .add(Items.STICK)

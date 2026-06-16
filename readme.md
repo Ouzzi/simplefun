@@ -1,6 +1,6 @@
 # Simplefun - Documentation & Wiki
 
-**Simplefun** is a modular Fabric mod for Minecraft 1.21+ that adds various gameplay tweaks, visual improvements, and administration tools.
+**Simplefun** is a fun, fully configurable Fabric mod for Minecraft **1.21.11** that adds a handful of "Vanilla+" gameplay tweaks — throwing, transformations, and combat tweaks — all toggleable.
 
 ## 📥 Installation & Dependencies
 
@@ -20,22 +20,35 @@ All features can be configured via the `cloth-config` GUI or the file `config/si
 | **Yeet (Throw)** | Allows throwing items far by sneaking (`Shift` + `Q`). Strength is adjustable. | `fun.enableYeet`, `fun.yeetStrength` |
 | **Throwable Bricks** | Bricks, Nether Bricks, and Resin Bricks can be thrown. Can optionally break glass. | `fun.enableThrowableBricks`, `fun.throwableBricksBreakBlocks` |
 | **Brick Snowball** | A new item that flies like a snowball but deals damage. Particles are a mix of snow and brick fragments. | `fun.brickSnowballDamage` |
+| **Piggy Transformation** | Eating (cooked) porkchop turns the player into a pig for 5 minutes — a pig head is rendered on top. Visible to all players in multiplayer. | `fun.enablePiggyEffect` |
 
 **Recipe: Brick Snowball**
-´´´
+```
   S
 S B S
   S
+```
 *(S = Snowball, B = Brick)*
-´´´
 
 ### ⚔️ PvP 
 * **Player Head Drops:** Players drop their head when killed in PvP (uses current skin).
 
-### 💻 Commands
-The following commands are available for Admins:
+### 🪄 Enchantments & Combat
+| Feature | Description | Config Key |
+| :--- | :--- | :--- |
+| **No-Damage** | Hitting with a **feather** deals 0 damage (knockback still applies). Also available as a custom **No-Damage enchantment** (sold by librarians) that can be applied to feathers, sticks and weapons. | `fun.enableNoDamage` |
+| **Higher Knockback** | The vanilla **Knockback** enchantment now goes up to **level 5** (instead of 2) and can be applied to feathers and sticks too. | *(data-driven)* |
 
-* `/simplefun config ...`: Allows changing config values at runtime (Level 4 OP required).
+### 💻 Commands
+The following commands change config values at runtime (Level 4 OP required):
+
+* `/simplefun pvp headDrops <true|false>` – toggle player head drops.
+* `/simplefun tweaks yeet toggle <true|false>` – enable/disable yeet.
+* `/simplefun tweaks yeet strength <value>` – set the yeet velocity multiplier.
+* `/simplefun tweaks bricks enable <true|false>` – enable/disable throwable bricks.
+* `/simplefun tweaks bricks breakGlass <true|false>` – allow thrown bricks to shatter glass.
+* `/simplefun tweaks bricks damage <value>` – set thrown-brick damage.
+* `/simplefun tweaks bricks snowballDamage <value>` – set Brick Snowball damage.
 
 ## 🏗️ Building from Source
 

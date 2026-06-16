@@ -33,6 +33,6 @@ public class ModEntities {
     );
 
     public static void registerModEntities() {
-        Simplefun.LOGGER.info("Registering Mod Entities for " + Simplefun.MOD_ID);
+        Simplefun.LOGGER.info("Registering Mod Entities for {}", Simplefun.MOD_ID);
     }
 }

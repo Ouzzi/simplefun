@@ -5,10 +5,6 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 @Config(name = Simplefun.MOD_ID)
 public class SimplefunConfig implements ConfigData {
 
@@ -22,6 +18,9 @@ public class SimplefunConfig implements ConfigData {
 
         @ConfigEntry.Gui.Tooltip
         public boolean enablePiggyEffect = true;
+
+        @ConfigEntry.Gui.Tooltip
+        public boolean enableNoDamage = true;
 
         @ConfigEntry.Gui.Tooltip
         public boolean enableYeet = true;

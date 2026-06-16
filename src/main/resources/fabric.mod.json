@@ -2,14 +2,15 @@
 	"schemaVersion": 1,
 	"id": "simplefun",
 	"version": "${version}",
-	"name": "simplefun",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Simplefun",
+	"description": "Small tweaks, big fun: a collection of configurable Vanilla+ features – Yeet (sneak-throw items), throwable bricks, the Brick Snowball, piggy transformation on eating porkchop, PvP player-head drops, and a No-Damage enchantment.",
 	"authors": [
-		"Me!"
+		"Ouzzi"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/Ouzzi/simplefun",
+		"sources": "https://github.com/Ouzzi/simplefun",
+		"issues": "https://github.com/Ouzzi/simplefun/issues"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/simplefun/icon.png",
@@ -35,6 +36,10 @@
 		"fabricloader": ">=0.18.3",
 		"minecraft": "~1.21.11",
 		"java": ">=21",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"cloth-config": ">=21.11.150"
+	},
+	"suggests": {
+		"modmenu": "*"
 	}
 }

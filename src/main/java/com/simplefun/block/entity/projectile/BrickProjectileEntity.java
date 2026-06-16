@@ -8,6 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,9 @@ import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -37,54 +40,64 @@ public class BrickProjectileEntity extends ThrownItemEntity {
         super(ModEntities.BRICK_PROJECTILE, x, y, z, world, new ItemStack(Items.BRICK));
     }
 
+    /**
+     * Gemeinsame Wurf-Logik für werfbare Ziegel (ItemMixin) und den Brick Snowball
+     * (BrickSnowballItem). Spielt den Sound, spawnt das Projektil (serverseitig),
+     * erhöht die "benutzt"-Statistik und verbraucht das Item (außer im Kreativmodus).
+     */
+    public static void throwFrom(World world, PlayerEntity user, ItemStack stack) {
+        world.playSound(null, user.getX(), user.getY(), user.getZ(),
+                SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL,
+                0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+
+        if (!world.isClient()) {
+            BrickProjectileEntity projectile = new BrickProjectileEntity(world, user);
+            projectile.setItem(stack); // Aussehen = geworfenes Item
+            projectile.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
+            world.spawnEntity(projectile);
+        }
+
+        user.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
+        if (!user.getAbilities().creativeMode) {
+            stack.decrement(1);
+        }
+    }
+
     @Override
     protected Item getDefaultItem() {
         return Items.BRICK;
     }
 
+    // Unveränderliche Anzeige-Stacks für die Aufprall-Partikel (vermeidet Allokation pro Treffer).
+    private static final ItemStack BRICK_PARTICLE_STACK = new ItemStack(Items.BRICK);
+    private static final ItemStack SNOWBALL_PARTICLE_STACK = new ItemStack(Items.SNOWBALL);
+
     @Override
     public void handleStatus(byte status) {
         // Status 3 = Kollision/Impact
-        if (status == 3) {
-            ItemStack stack = this.getStack();
+        if (status != 3) return;
 
-            // 1. Standard Partikel für das geworfene Item erzeugen (z.B. der Ziegel oder der Brick-Snowball selbst)
-            for(int i = 0; i < 8; ++i) {
-                this.getEntityWorld().addParticleClient(
-                        new ItemStackParticleEffect(ParticleTypes.ITEM, stack),
-                        this.getX(), this.getY(), this.getZ(),
-                        ((double)this.random.nextFloat() - 0.5D) * 0.08D,
-                        ((double)this.random.nextFloat() - 0.5D) * 0.08D,
-                        ((double)this.random.nextFloat() - 0.5D) * 0.08D
-                );
-            }
+        ItemStack stack = this.getStack();
 
-            // 2. Spezial-Logik für Brick Snowball: Beide Partikelarten mischen
-            if (stack.isOf(ModItems.BRICK_SNOWBALL)) {
-                // Zusätzliche Ziegel-Partikel (Rot/Braun)
-                ItemStack brickStack = new ItemStack(Items.BRICK);
-                for(int i = 0; i < 8; ++i) {
-                     this.getEntityWorld().addParticleClient(
-                            new ItemStackParticleEffect(ParticleTypes.ITEM, brickStack),
-                            this.getX(), this.getY(), this.getZ(),
-                            ((double)this.random.nextFloat() - 0.5D) * 0.08D,
-                            ((double)this.random.nextFloat() - 0.5D) * 0.08D,
-                            ((double)this.random.nextFloat() - 0.5D) * 0.08D
-                    );
-                }
+        // Standard-Partikel für das geworfene Item (Ziegel oder Brick-Snowball selbst)
+        spawnImpactParticles(stack, 8);
 
-                // Zusätzliche Schneeball-Partikel (Weiß) - für mehr "Schnee-Explosion"
-                ItemStack snowStack = new ItemStack(Items.SNOWBALL);
-                for(int i = 0; i < 8; ++i) {
-                     this.getEntityWorld().addParticleClient(
-                            new ItemStackParticleEffect(ParticleTypes.ITEM, snowStack),
-                            this.getX(), this.getY(), this.getZ(),
-                            ((double)this.random.nextFloat() - 0.5D) * 0.08D,
-                            ((double)this.random.nextFloat() - 0.5D) * 0.08D,
-                            ((double)this.random.nextFloat() - 0.5D) * 0.08D
-                    );
-                }
-            }
+        // Brick Snowball: zusätzlich Ziegel- (rot/braun) und Schneeball-Partikel (weiß) mischen
+        if (stack.isOf(ModItems.BRICK_SNOWBALL)) {
+            spawnImpactParticles(BRICK_PARTICLE_STACK, 8);
+            spawnImpactParticles(SNOWBALL_PARTICLE_STACK, 8);
+        }
+    }
+
+    private void spawnImpactParticles(ItemStack stack, int count) {
+        for (int i = 0; i < count; ++i) {
+            this.getEntityWorld().addParticleClient(
+                    new ItemStackParticleEffect(ParticleTypes.ITEM, stack),
+                    this.getX(), this.getY(), this.getZ(),
+                    ((double) this.random.nextFloat() - 0.5D) * 0.08D,
+                    ((double) this.random.nextFloat() - 0.5D) * 0.08D,
+                    ((double) this.random.nextFloat() - 0.5D) * 0.08D
+            );
         }
     }
 

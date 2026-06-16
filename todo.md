@@ -2,8 +2,11 @@
 - some more features
 - Mobheads
 - Morph (Animals, Blocks, Entities)
-- Higher knockback levels
 
 ## Bugs:
-- Pighead not showing in multiplayer only own game client
-- 
+- (keine offen)
+
+## Erledigt:
+- Higher knockback levels — Knockback-Override auf max_level 5 angehoben
+- Pighead im Multiplayer — über getrackte DataTracker-Daten an alle Clients synchronisiert
+  (PlayerEntityMixin + PiggyTracked, gelesen im Renderer)

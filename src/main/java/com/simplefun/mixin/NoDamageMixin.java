@@ -1,5 +1,6 @@
 package com.simplefun.mixin;
 
+import com.simplefun.Simplefun;
 import com.simplefun.enchantment.ModEnchantments;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -23,6 +24,9 @@ public class NoDamageMixin {
     // WICHTIG: Die Argumente müssen exakt mit der Zielmethode (damage) übereinstimmen: (ServerWorld, DamageSource, float)
     @ModifyVariable(method = "damage", at = @At("HEAD"), argsOnly = true)
     private float modifyDamageAmount(float amount, ServerWorld world, DamageSource source) {
+        // Config Check: Feature komplett abschaltbar (wie alle anderen Features)
+        if (!Simplefun.getConfig().fun.enableNoDamage) return amount;
+
         // Prüfen, ob der Angreifer ein Spieler ist
         if (source.getAttacker() instanceof PlayerEntity player) {
             ItemStack stack = player.getMainHandStack();
