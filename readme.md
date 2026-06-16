@@ -1,14 +1,19 @@
 # Simplefun - Documentation & Wiki
 
-**Simplefun** is a fun, fully configurable Fabric mod for Minecraft **1.21.11** that adds a handful of "Vanilla+" gameplay tweaks — throwing, transformations, and combat tweaks — all toggleable.
+**Simplefun** is a fun, fully configurable mod for Minecraft **1.21.11** that adds a handful of "Vanilla+" gameplay tweaks — throwing, transformations, and combat tweaks — all toggleable. It runs on both **Fabric** and **NeoForge**.
 
 ## 📥 Installation & Dependencies
 
-To use Simplefun, the following mods must be installed:
-1.  **Fabric Loader**
-2.  **Fabric API**
-3.  **Cloth Config API** (for the configuration menu)
-4.  **Mod Menu** (optional, but recommended for in-game configuration)
+Required on **both** loaders:
+* **Cloth Config API**
+
+On **Fabric**, additionally:
+* **Fabric Loader** + **Fabric API**
+* **Mod Menu** (optional, but recommended for the in-game config screen)
+
+On **NeoForge**, additionally:
+* **NeoForge** `21.11+`
+* The config is edited via `config/simplefun.json` or the `/simplefun` commands (the in-game config screen is Fabric-only).
 
 ## 📖 Features in Detail
 
@@ -20,7 +25,7 @@ All features can be configured via the `cloth-config` GUI or the file `config/si
 | **Yeet (Throw)** | Allows throwing items far by sneaking (`Shift` + `Q`). Strength is adjustable. | `fun.enableYeet`, `fun.yeetStrength` |
 | **Throwable Bricks** | Bricks, Nether Bricks, and Resin Bricks can be thrown. Can optionally break glass. | `fun.enableThrowableBricks`, `fun.throwableBricksBreakBlocks` |
 | **Brick Snowball** | A new item that flies like a snowball but deals damage. Particles are a mix of snow and brick fragments. | `fun.brickSnowballDamage` |
-| **Piggy Transformation** | Eating (cooked) porkchop turns the player into a pig for 5 minutes — a pig head is rendered on top. Visible to all players in multiplayer. | `fun.enablePiggyEffect` |
+| **Piggy Transformation** | Eating (cooked) porkchop turns the player into a pig for 5 minutes — a pig head is rendered on top. Visible to all players in multiplayer on Fabric (on NeoForge it is shown for the local player and mobs). | `fun.enablePiggyEffect` |
 
 **Recipe: Brick Snowball**
 ```
@@ -59,7 +64,12 @@ To compile the mod yourself:
 3.  Run:
     * Windows: `gradlew build`
     * Linux/Mac: `./gradlew build`
-4.  The file will be located in `build/libs/`.
+4.  The built jars are located in:
+    * Fabric: `fabric/build/libs/simplefun-fabric-*.jar`
+    * NeoForge: `neoforge/build/libs/simplefun-neoforge-*.jar`
+
+The project is a MultiLoader-Template setup: shared code lives in `common/` (Mojang mappings),
+and the loader-specific glue in `fabric/` and `neoforge/`.
 
 ## ⚖️ License
 This project is released under the **CC0 1.0 Universal** license. You can copy, modify, and use the code however you like.

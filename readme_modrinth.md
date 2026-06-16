@@ -22,10 +22,14 @@ Simplefun is a small collection of "Vanilla+" fun features that polish your Mine
 ## ⚙️ Configuration
 Everything is adjustable! Open the in-game config (via **Mod Menu**) to toggle every single feature, or edit `config/simplefun.json`. Admins can also change values at runtime with `/simplefun …` (OP level 4).
 
-## 📦 Requirements
-* **Fabric Loader** & **Fabric API**
-* **Cloth Config** (required)
-* **Mod Menu** (optional, recommended — adds the in-game config button)
+## 📦 Loaders & Requirements
+Runs on **Fabric** and **NeoForge** (Minecraft 1.21.11).
+
+* **Cloth Config** – required on both loaders.
+* **Fabric:** Fabric Loader + Fabric API, and **Mod Menu** (optional) for the in-game config button.
+* **NeoForge:** NeoForge 21.11+. Config via `config/simplefun.json` or `/simplefun` commands (no in-game config screen on NeoForge).
+
+*Note: the multiplayer piggy-head sync (seeing other players transformed) is currently Fabric-only; on NeoForge the pig head shows for yourself and mobs.*
 
 ## 🆕 What's new in 1.1.0
 * 🐷 **Piggy Transformation now works in multiplayer** — the pig head is synced to all players (previously only visible on your own client).
