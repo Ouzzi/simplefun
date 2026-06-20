@@ -12,7 +12,7 @@ Simplefun is a small collection of "Vanilla+" fun features that polish your Mine
 * **Yeet:** Crouch + Drop = Throw! Yeet items into the world with force (Sneak + Q). Adjustable strength.
 * **Throwable Bricks:** Throw Bricks, Nether Bricks and Resin Bricks to smash glass or deal damage.
 * **Brick Snowball:** Craftable from a Brick and 4 Snowballs. Flies like a snowball, but hits much harder — with a mix of snow and brick impact particles.
-* **Piggy Transformation:** Eat (cooked) porkchop and turn into a pig for 5 minutes — a pig head is rendered on your character. **Visible to everyone in multiplayer.**
+* **Piggy Transformation:** Eat (cooked) porkchop and turn into a pig for 5 minutes — a pig head is rendered on your character. Other players see it too on **Fabric** (on NeoForge it shows for yourself and mobs).
 
 ### ⚔️ Combat & PvP
 * **No-Damage:** Hitting with a **feather** deals 0 damage (knockback still applies) — great for non-lethal knockback fights. Also available as a custom **No-Damage enchantment** sold by librarians.
@@ -20,7 +20,7 @@ Simplefun is a small collection of "Vanilla+" fun features that polish your Mine
 * **Player Head Drops:** Defeated players drop their head upon death in PvP (uses their current skin).
 
 ## ⚙️ Configuration
-Everything is adjustable! Open the in-game config (via **Mod Menu**) to toggle every single feature, or edit `config/simplefun.json`. Admins can also change values at runtime with `/simplefun …` (OP level 4).
+Everything is adjustable! On **Fabric**, open the in-game config screen via **Mod Menu**. On any loader you can edit `config/simplefun.json` or change values at runtime with `/simplefun …` (OP level 4).
 
 ## 📦 Loaders & Requirements
 Runs on **Fabric** and **NeoForge** (Minecraft 1.21.11).
@@ -31,8 +31,9 @@ Runs on **Fabric** and **NeoForge** (Minecraft 1.21.11).
 
 *Note: the multiplayer piggy-head sync (seeing other players transformed) is currently Fabric-only; on NeoForge the pig head shows for yourself and mobs.*
 
-## 🆕 What's new in 1.1.0
-* 🐷 **Piggy Transformation now works in multiplayer** — the pig head is synced to all players (previously only visible on your own client).
+## 🆕 What's new
+* 🧩 **Now runs on NeoForge** as well as Fabric (Minecraft 1.21.11).
+* 🐷 **Piggy Transformation multiplayer sync** — other players can see the pig head (Fabric; on NeoForge it shows for yourself and mobs).
 * 🪶 **No-Damage is now toggleable** in the config.
 * 🥊 **Higher Knockback levels** (up to V).
 * 🔧 Fixed a bug where the **Knockback enchantment did nothing** (the data override accidentally removed the vanilla effect).

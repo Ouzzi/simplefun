@@ -17,7 +17,7 @@ On **NeoForge**, additionally:
 
 ## 📖 Features in Detail
 
-All features can be configured via the `cloth-config` GUI or the file `config/simplefun.json`.
+All features can be configured via the in-game config screen (Fabric, through Mod Menu), the file `config/simplefun.json`, or the `/simplefun` commands.
 
 ### 🎮 Fun & Gameplay
 | Feature | Description | Config Key |
