@@ -20,14 +20,14 @@ Simplefun is a small collection of "Vanilla+" fun features that polish your Mine
 * **Player Head Drops:** Defeated players drop their head upon death in PvP (uses their current skin).
 
 ## ⚙️ Configuration
-Everything is adjustable! On **Fabric**, open the in-game config screen via **Mod Menu**. On any loader you can edit `config/simplefun.json` or change values at runtime with `/simplefun …` (OP level 4).
+Everything is adjustable! Open the in-game config screen (on **Fabric** via **Mod Menu**, on **NeoForge** via the mod list's config button), edit `config/simplefun.json`, or change values at runtime with `/simplefun …` (OP level 4).
 
 ## 📦 Loaders & Requirements
 Runs on **Fabric** and **NeoForge** (Minecraft 1.21.11).
 
 * **Cloth Config** – required on both loaders.
 * **Fabric:** Fabric Loader + Fabric API, and **Mod Menu** (optional) for the in-game config button.
-* **NeoForge:** NeoForge 21.11+. Config via `config/simplefun.json` or `/simplefun` commands (no in-game config screen on NeoForge).
+* **NeoForge:** NeoForge 21.11+ (the config button is in NeoForge's built-in mod list).
 
 ## 🆕 Changelog
 

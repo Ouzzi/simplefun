@@ -57,7 +57,7 @@ public class SimplefunNeoForge {
         });
 
         if (dist == Dist.CLIENT) {
-            SimplefunNeoForgeClient.init(modBus);
+            SimplefunNeoForgeClient.init(modBus, modContainer);
         }
     }
 }

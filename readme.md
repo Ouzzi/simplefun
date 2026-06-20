@@ -12,12 +12,11 @@ On **Fabric**, additionally:
 * **Mod Menu** (optional, but recommended for the in-game config screen)
 
 On **NeoForge**, additionally:
-* **NeoForge** `21.11+`
-* The config is edited via `config/simplefun.json` or the `/simplefun` commands (the in-game config screen is Fabric-only).
+* **NeoForge** `21.11+` (the config screen opens from the **config button in NeoForge's mod list**)
 
 ## 📖 Features in Detail
 
-All features can be configured via the in-game config screen (Fabric, through Mod Menu), the file `config/simplefun.json`, or the `/simplefun` commands.
+All features can be configured via the in-game config screen (Fabric: Mod Menu; NeoForge: the mod list), the file `config/simplefun.json`, or the `/simplefun` commands.
 
 ### 🎮 Fun & Gameplay
 | Feature | Description | Config Key |
