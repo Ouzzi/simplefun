@@ -31,10 +31,15 @@ Runs on **Fabric** and **NeoForge** (Minecraft 1.21.11).
 
 *Note: the multiplayer piggy-head sync (seeing other players transformed) is currently Fabric-only; on NeoForge the pig head shows for yourself and mobs.*
 
-## 🆕 What's new
+## 🆕 Changelog
+
+### 1.2.0
 * 🧩 **Now runs on NeoForge** as well as Fabric (Minecraft 1.21.11).
-* 🐷 **Piggy Transformation multiplayer sync** — other players can see the pig head (Fabric; on NeoForge it shows for yourself and mobs).
+* 🐷 Piggy Transformation multiplayer sync stays on **Fabric** (on NeoForge the pig head shows for yourself and mobs).
+
+### 1.1.0
+* 🐷 **Piggy Transformation** in multiplayer — the pig head is synced to other players.
 * 🪶 **No-Damage is now toggleable** in the config.
 * 🥊 **Higher Knockback levels** (up to V).
 * 🔧 Fixed a bug where the **Knockback enchantment did nothing** (the data override accidentally removed the vanilla effect).
-* 🧰 Cloth Config is now declared as a proper dependency, the admin command now correctly requires OP level 4, command messages and config options are fully translated (EN/DE), and a lot of internal cleanup.
+* 🧰 Cloth Config is now a proper dependency, the admin command correctly requires OP level 4, command messages and config options are fully translated (EN/DE), plus a lot of internal cleanup.

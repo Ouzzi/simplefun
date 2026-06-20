@@ -3,7 +3,6 @@ package com.simplefun.registry;
 import com.simplefun.Constants;
 import com.simplefun.effect.PiggyEffect;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
