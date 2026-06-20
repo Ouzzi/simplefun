@@ -21,6 +21,12 @@ neoForge {
         client {
             client()
         }
+        // Second client for local multiplayer testing (separate run dir + username).
+        client2 {
+            client()
+            gameDirectory = file('run2')
+            programArguments.addAll '--username', 'Tester2'
+        }
         data {
             clientData()
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
