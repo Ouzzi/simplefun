@@ -12,7 +12,7 @@ Simplefun is a small collection of "Vanilla+" fun features that polish your Mine
 * **Yeet:** Crouch + Drop = Throw! Yeet items into the world with force (Sneak + Q). Adjustable strength.
 * **Throwable Bricks:** Throw Bricks, Nether Bricks and Resin Bricks to smash glass or deal damage.
 * **Brick Snowball:** Craftable from a Brick and 4 Snowballs. Flies like a snowball, but hits much harder — with a mix of snow and brick impact particles.
-* **Piggy Transformation:** Eat (cooked) porkchop and turn into a pig for 5 minutes — a pig head is rendered on your character. Other players see it too on **Fabric** (on NeoForge it shows for yourself and mobs).
+* **Piggy Transformation:** Eat (cooked) porkchop and turn into a pig for 5 minutes — a pig head is rendered on your character. Other players see it too in multiplayer.
 
 ### ⚔️ Combat & PvP
 * **No-Damage:** Hitting with a **feather** deals 0 damage (knockback still applies) — great for non-lethal knockback fights. Also available as a custom **No-Damage enchantment** sold by librarians.
@@ -29,13 +29,12 @@ Runs on **Fabric** and **NeoForge** (Minecraft 1.21.11).
 * **Fabric:** Fabric Loader + Fabric API, and **Mod Menu** (optional) for the in-game config button.
 * **NeoForge:** NeoForge 21.11+. Config via `config/simplefun.json` or `/simplefun` commands (no in-game config screen on NeoForge).
 
-*Note: the multiplayer piggy-head sync (seeing other players transformed) is currently Fabric-only; on NeoForge the pig head shows for yourself and mobs.*
-
 ## 🆕 Changelog
 
 ### 1.2.0
 * 🧩 **Now runs on NeoForge** as well as Fabric (Minecraft 1.21.11).
-* 🐷 Piggy Transformation multiplayer sync stays on **Fabric** (on NeoForge the pig head shows for yourself and mobs).
+* 🐷 Piggy Transformation multiplayer sync works on **both** loaders (synced entity data on Fabric, a synced data attachment on NeoForge).
+* 🧱 Brick Snowball moved to the **Ingredients** creative tab.
 
 ### 1.1.0
 * 🐷 **Piggy Transformation** in multiplayer — the pig head is synced to other players.

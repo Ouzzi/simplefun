@@ -25,7 +25,7 @@ All features can be configured via the in-game config screen (Fabric, through Mo
 | **Yeet (Throw)** | Allows throwing items far by sneaking (`Shift` + `Q`). Strength is adjustable. | `fun.enableYeet`, `fun.yeetStrength` |
 | **Throwable Bricks** | Bricks, Nether Bricks, and Resin Bricks can be thrown. Can optionally break glass. | `fun.enableThrowableBricks`, `fun.throwableBricksBreakBlocks` |
 | **Brick Snowball** | A new item that flies like a snowball but deals damage. Particles are a mix of snow and brick fragments. | `fun.brickSnowballDamage` |
-| **Piggy Transformation** | Eating (cooked) porkchop turns the player into a pig for 5 minutes — a pig head is rendered on top. Visible to all players in multiplayer on Fabric (on NeoForge it is shown for the local player and mobs). | `fun.enablePiggyEffect` |
+| **Piggy Transformation** | Eating (cooked) porkchop turns the player into a pig for 5 minutes — a pig head is rendered on top. Visible to all players in multiplayer (on both loaders). | `fun.enablePiggyEffect` |
 
 **Recipe: Brick Snowball**
 ```

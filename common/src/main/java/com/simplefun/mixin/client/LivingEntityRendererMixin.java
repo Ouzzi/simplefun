@@ -1,8 +1,7 @@
 package com.simplefun.mixin.client;
 
 import com.simplefun.client.PiggyStateExtension;
-import com.simplefun.entity.PiggyTracked;
-import com.simplefun.registry.ModEffects;
+import com.simplefun.platform.Services;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,15 +16,8 @@ public class LivingEntityRendererMixin {
     @Inject(method = "extractRenderState", at = @At("TAIL"))
     private void simplefun$updatePiggyState(LivingEntity entity, LivingEntityRenderState state, float partialTick, CallbackInfo ci) {
         if (state instanceof PiggyStateExtension piggyState) {
-            boolean hasEffect;
-            if (entity instanceof PiggyTracked tracked) {
-                // Players: remote players' effects aren't synced; use the synced flag.
-                hasEffect = tracked.simplefun$isPiggyTracked();
-            } else {
-                // Mobs: effect instances are synced via the entity tracker.
-                hasEffect = entity.hasEffect(ModEffects.holder());
-            }
-            piggyState.simplefun$setPiggy(hasEffect);
+            // The loader-specific synced state (entity data on Fabric, data attachment on NeoForge).
+            piggyState.simplefun$setPiggy(Services.PLATFORM.isPiggySynced(entity));
         }
     }
 }
